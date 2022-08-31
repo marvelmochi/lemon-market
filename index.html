@@ -30,18 +30,25 @@
         <div id="login-title">LEMON MARKET LOGIN</div>
         <form id="login-form">
           <div>
-            <input id="id-input" placeholder="ID" required />
+            <input id="id-input" placeholder="ID" autocomplete="off" required />
           </div>
           <div>
-            <input id="password-input" placeholder="PASSWORD" required />
+            <input
+              id="password-input"
+              type="password"
+              placeholder="PASSWORD"
+              required
+              autocomplete="off"
+            />
           </div>
           <div id="button-container">
-            <button>LOGIN</button>
-            <button>SIGN UP</button>
+            <button id="login-btn">LOGIN</button>
+            <button id="sign-btn">SIGN UP</button>
           </div>
         </form>
       </div>
       <!-- //로그인 -->
     </div>
+    <script src="./js/login.js"></script>
   </body>
 </html>
