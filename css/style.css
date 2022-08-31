@@ -1,12 +1,21 @@
 @charset "utf-8";
 
 :root {
-  --main-theme-color: #ffffff;
+  /* color */
+  --main-color: #ffffff;
   --main-bg-color: #fffcdf;
   --header-color: #fffbca;
+  --title-text-color: #ffffff;
+  --colourless: rgba(0, 0, 0, 0);
+  --text-shadow: 1px 1px 4px #d7ce65;
+  --shadow-color: #d7ce65;
+
+  /* size */
   --mobile-width: 360px;
   --mobile-height: 800px;
-  --title-text-color: #ffffff;
+
+  /* font */
+  --title-font: "Anton";
 }
 
 body {
@@ -16,20 +25,37 @@ body {
 #wrap {
   width: var(--mobile-width);
   height: var(--mobile-height);
-  background-color: var(--main-theme-color);
+  background-color: var(--main-color);
   border: black;
   margin: 0 auto;
 }
 
+/* 헤더 */
 #header {
   width: var(--mobile-width);
-  height: 100px;
+  height: 50px;
   background-color: var(--header-color);
   color: var(--title-text-color);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 42px;
-  text-shadow: 1px 1px 4px #d7ce65;
-  font-family: "Anton";
+  justify-content: space-between;
+  box-shadow: 0px 4px 4px -4px var(--shadow-color);
+}
+#title {
+  font-size: 24px;
+  text-shadow: var(--text-shadow);
+  font-family: var(--title-font);
+}
+#logo {
+  margin-left: 20px;
+  text-shadow: var(--text-shadow);
+}
+#menu-button {
+  color: var(--title-text-color);
+  margin-right: 20px;
+  font-size: 20px;
+  border: 0;
+  background-color: var(--colourless);
+  text-shadow: var(--text-shadow);
 }
