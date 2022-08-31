@@ -5,10 +5,10 @@
   --main-color: #ffffff;
   --main-bg-color: #fffcdf;
   --header-color: #fffbca;
+  --button-color: #fbf4a4;
   --title-text-color: #ffffff;
+  --title-color: #f3e86f;
   --colourless: rgba(0, 0, 0, 0);
-  --text-shadow: 1px 1px 4px #d7ce65;
-  --shadow-color: #d7ce65;
 
   /* size */
   --mobile-width: 360px;
@@ -16,10 +16,26 @@
 
   /* font */
   --title-font: "Anton";
+  --text-font: "Roboto";
+  --kor-font: "Noto Sans KR";
+
+  --font-large: 24px;
+  --font-medium: 18px;
+  --font-small: 14px;
+
+  /* radius */
+  --button-radius: 0.3em;
+  --input-radius: 0.1em;
+
+  /* shadow */
+  --shadow-color: #d7ce65;
+  --text-shadow: 1px 1px 4px #d7ce65;
+  --button-shadow: 1px 1px 5px #d6d08b;
 }
 
 body {
   background-color: var(--main-bg-color);
+  font-family: var(--kor-font);
 }
 
 #wrap {
@@ -43,7 +59,7 @@ body {
   box-shadow: 0px 4px 4px -4px var(--shadow-color);
 }
 #title {
-  font-size: 24px;
+  font-size: var(--font-large);
   text-shadow: var(--text-shadow);
   font-family: var(--title-font);
 }
@@ -58,4 +74,62 @@ body {
   border: 0;
   background-color: var(--colourless);
   text-shadow: var(--text-shadow);
+}
+
+/* 로그인 */
+#login {
+  width: 320px;
+  height: 200px;
+  background-color: var(--main-bg-color);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 200px;
+  border-radius: var(--button-radius);
+}
+
+#login-title {
+  font-size: var(--font-small);
+  color: var(--title-color);
+}
+#login-form {
+}
+
+#login-form input {
+  font-size: var(--font-medium);
+  margin: 10px;
+  border-radius: var(--input-radius);
+  border: 0;
+  padding: 5px;
+  padding-left: 15px;
+  border: 0.5px solid #e5e5e56d;
+}
+#login-form input::placeholder {
+  color: #c0c0c0;
+}
+#login-form #button-container {
+  text-align: center;
+}
+
+#button-container button {
+  border: 0;
+  font-size: var(--font-medium);
+  width: 100px;
+  height: 40px;
+  margin: 5px;
+  border-radius: var(--button-radius);
+  background-color: var(--button-color);
+  color: var(--title-text-color);
+  font-family: var(--text-font);
+  text-shadow: var(--text-shadow);
+  box-shadow: var(--button-shadow);
+}
+#button-container button:active {
+  background-color: #ece6a0;
+}
+.hidden {
+  display: none !important;
 }
