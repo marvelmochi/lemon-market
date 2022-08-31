@@ -1,9 +1,9 @@
 @charset "utf-8";
 
 :root {
-  --main-theme-color: #fffbca;
+  --main-theme-color: #ffffff;
   --main-bg-color: #fffcdf;
-  --header-color: #fff8b0;
+  --header-color: #fffbca;
   --mobile-width: 360px;
   --mobile-height: 800px;
   --title-text-color: #ffffff;
@@ -30,6 +30,6 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 42px;
-  text-shadow: 1px 1px 4px var(--title-text-color);
+  text-shadow: 1px 1px 4px #d7ce65;
   font-family: "Anton";
 }
