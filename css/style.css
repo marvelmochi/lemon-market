@@ -1,8 +1,12 @@
 @charset "utf-8";
 
 :root {
-  --main-theme-color: #fff9bb;
-  --main-bg-color: #fffbd6;
+  --main-theme-color: #fffbca;
+  --main-bg-color: #fffcdf;
+  --header-color: #fff8b0;
+  --mobile-width: 360px;
+  --mobile-height: 800px;
+  --title-text-color: #ffffff;
 }
 
 body {
@@ -10,9 +14,22 @@ body {
 }
 
 #wrap {
-  width: 320px;
-  height: 1024px;
+  width: var(--mobile-width);
+  height: var(--mobile-height);
   background-color: var(--main-theme-color);
   border: black;
   margin: 0 auto;
+}
+
+#header {
+  width: var(--mobile-width);
+  height: 100px;
+  background-color: var(--header-color);
+  color: var(--title-text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 42px;
+  text-shadow: 1px 1px 4px var(--title-text-color);
+  font-family: "Anton";
 }
