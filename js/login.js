@@ -5,32 +5,46 @@ const pwInput = document.getElementById("password-input");
 const loginBtn = document.getElementById("login-btn");
 const signBtn = document.getElementById("sign-btn");
 
+const USERINFO_KEY = "userInfo";
+let userList = [];
+
 function signUp(event) {
   event.preventDefault();
-  const id = idInput.value;
-  const pw = pwInput.value;
-
-  if (localStorage.getItem("id") === id) {
-    alert("이미 존재하는 아이디입니다.");
+  const userId = idInput.value;
+  const userPw = pwInput.value;
+  if (checkSameId(userId)) {
+    alert("동일한 아이디가 존재합니다.");
   } else {
-    localStorage.setItem("id", id);
-    localStorage.setItem("pw", pw);
-
-    alert("회원가입이 완료되었습니다.");
+    newUser = {
+      id: userId,
+      pw: userPw,
+    };
+    userList.push(newUser);
+    saveUser(userList);
+    alert("회원가입되었습니다.");
   }
+  idInput.value = "";
+  pwInput.value = "";
+}
+// 동일 아이디가 있는지 체크
+function checkSameId(userId) {
+  const savedUserInfo = JSON.parse(localStorage.getItem(USERINFO_KEY));
+  console.log(savedUserInfo);
+  let result = false;
+  if (savedUserInfo === null) {
+  } else {
+    for (i = 0; i < savedUserInfo.length; i++) {
+      if (userId === savedUserInfo[i].id) {
+        result = true;
+      }
+    }
+  }
+  return result;
+}
+// 회원등록
+function saveUser(userList) {
+  localStorage.setItem(USERINFO_KEY, JSON.stringify(userList));
+  console.log(JSON.parse(localStorage.getItem(USERINFO_KEY)));
 }
 
-function login(event) {
-  event.preventDefault();
-  const id = idInput.value;
-  const pw = pwInput.value;
-
-  if (localStorage.getItem("id") === id && localStorage.getItem("pw") === pw) {
-    loginContainer.classList.add("hidden");
-    alert("로그인되었습니다.");
-  } else {
-    alert("아이디 혹은 패스워드를 잘못 입력했습니다.");
-  }
-}
 signBtn.addEventListener("click", signUp);
-loginBtn.addEventListener("click", login);
