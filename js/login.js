@@ -1,61 +1,38 @@
-const loginContainer = document.getElementById("login");
-const loginForm = document.getElementById("login-form");
-const idInput = document.getElementById("id-input");
-const pwInput = document.getElementById("password-input");
-const loginBtn = document.getElementById("login-btn");
-const signBtn = document.getElementById("sign-btn");
-
-const USERINFO_KEY = "userInfo";
-
-let userList = loadUser();
-
-function signUp(event) {
+import { idInput, pwInput, loginBtn } from "./elements.js";
+import { loadUser } from "./signUp.js";
+import { toggleHidden } from "./utils.js";
+function login(event) {
   event.preventDefault();
-  const userId = idInput.value;
-  const userPw = pwInput.value;
-  if (checkSameId(userId)) {
-    console.log("동일한 아이디가 존재합니다.");
+  let userList = loadUser();
+  console.log(userList);
+  //console.log(userId, userPw);
+
+  if (userList.length === 0) {
+    alert("등록된 아이디가 없습니다.");
+    // 이 경우뿐만 아니라, 아이디가 아예 존재하지 않는 경우도 추가해야함
   } else {
-    newUser = {
-      id: userId,
-      pw: userPw,
-      content: Date.now(),
-    };
-    userList.push(newUser);
-    saveUser();
-    console.log("회원가입되었습니다!");
-  }
-  idInput.value = "";
-  pwInput.value = "";
-}
-// 동일 아이디가 있는지 체크
-function checkSameId(userId) {
-  const savedUserInfo = JSON.parse(localStorage.getItem(USERINFO_KEY));
-  console.log(savedUserInfo);
-  let result = false;
-  if (savedUserInfo !== null) {
-    for (i = 0; i < savedUserInfo.length; i++) {
-      if (userId === savedUserInfo[i].id) {
-        result = true;
-      }
+    if (checkLogin()) {
+      //로그인 완료
+      alert(`${idInput.value}님 환영합니다!`);
+    } else {
+      //로그인 불가
+      alert("아이디나 비밀번호가 일치하지 않습니다.");
     }
   }
-  return result;
-}
-// 회원등록
-function saveUser() {
-  localStorage.setItem(USERINFO_KEY, JSON.stringify(userList));
 }
 
-signBtn.addEventListener("click", signUp);
-
-// 로컬스토리지 데이터 로드
-function loadUser() {
-  let loadList = localStorage.getItem(USERINFO_KEY);
-  if (loadList !== null) {
-    //console.log(loadList);
-    return JSON.parse(loadList);
-  } else {
-    return [];
+function checkLogin() {
+  let userList = loadUser();
+  console.log(userList);
+  const userId = idInput.value;
+  const userPw = pwInput.value;
+  let loginUser = null;
+  for (let i = 0; i < userList.length; i++) {
+    if (userId === userList[i].id && userPw === userList[i].pw) {
+      loginUser = userList[i];
+    }
+    return loginUser;
   }
 }
+
+loginBtn.addEventListener("click", login);

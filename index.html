@@ -30,14 +30,14 @@
         <div id="login-title">LEMON MARKET LOGIN</div>
         <form id="login-form">
           <div>
-            <input id="id-input" placeholder="ID" autocomplete="off" required />
+            <input required id="id-input" placeholder="ID" autocomplete="off" />
           </div>
           <div>
             <input
+              required
               id="password-input"
               type="password"
               placeholder="PASSWORD"
-              required
               autocomplete="off"
             />
           </div>
@@ -49,6 +49,9 @@
       </div>
       <!-- //로그인 -->
     </div>
-    <script src="./js/login.js"></script>
+    <script type="module" , src="./js/elements.js"></script>
+    <script type="module" , src="./js/utils.js"></script>
+    <script type="module" , src="./js/signUp.js"></script>
+    <script type="module" , src="./js/login.js"></script>
   </body>
 </html>
