@@ -1,7 +1,6 @@
 export { loadUser };
 import { idInput, pwInput, signUpBtn } from "./elements.js";
-
-const USERINFO_KEY = "userInfo";
+import { USERINFO_KEY } from "./utils.js";
 
 let userList = loadUser();
 
