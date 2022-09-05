@@ -1,4 +1,8 @@
 @charset "utf-8";
+/* Utils */
+.hidden {
+  display: none !important;
+}
 
 :root {
   /* color */
@@ -28,9 +32,10 @@
   --input-radius: 0.1em;
 
   /* shadow */
-  --shadow-color: #d7ce65;
+  --shadow-color: #e6dc73;
   --text-shadow: 1px 1px 4px #d7ce65;
   --button-shadow: 1px 1px 5px #d6d08b;
+  --box-shadow: 1px 1px 6px var(--shadow-color);
 }
 
 body {
@@ -81,6 +86,7 @@ body {
   width: 320px;
   height: 200px;
   background-color: var(--main-bg-color);
+  box-shadow: var(--box-shadow);
 
   display: flex;
   flex-direction: column;
@@ -95,8 +101,6 @@ body {
   font-size: var(--font-small);
   color: var(--title-color);
 }
-#login-form {
-}
 
 #login-form input {
   font-size: var(--font-medium);
@@ -110,11 +114,11 @@ body {
 #login-form input::placeholder {
   color: #c0c0c0;
 }
-#login-form #button-container {
+#login-form #login-btn-container {
   text-align: center;
 }
 
-#button-container button {
+#login-btn-container button {
   border: 0;
   font-size: var(--font-medium);
   width: 100px;
@@ -127,9 +131,22 @@ body {
   text-shadow: var(--text-shadow);
   box-shadow: var(--button-shadow);
 }
-#button-container button:active {
+#login-btn-container button:active {
   background-color: #ece6a0;
 }
-.hidden {
-  display: none !important;
+
+/* 위치 */
+#location {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+#location #town {
+  margin-right: 10px;
+}
+#location #location-btn {
+  background-color: var(--colourless);
+  border: 0;
+  font-size: var(--font-medium);
 }

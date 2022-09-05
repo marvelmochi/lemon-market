@@ -26,7 +26,7 @@
       </div>
       <!-- //헤더 -->
       <!-- 로그인 -->
-      <div id="login">
+      <div id="login" class="hidden">
         <div id="login-title">LEMON MARKET LOGIN</div>
         <form id="login-form">
           <div>
@@ -41,17 +41,27 @@
               autocomplete="off"
             />
           </div>
-          <div id="button-container">
+          <div id="login-btn-container">
             <button id="login-btn">LOGIN</button>
             <button id="sign-btn">SIGN UP</button>
           </div>
         </form>
       </div>
       <!-- //로그인 -->
+      <!-- 위치 -->
+      <div id="location">
+        <div id="town">화곡2동</div>
+        <button id="location-btn">🔄</button>
+      </div>
+      <!-- //위치-->
+      <!-- 메인 -->
+      <!-- //메인 -->
     </div>
+    <script type="text/javascript" , src="./js/apiKey.js"></script>
     <script type="module" , src="./js/elements.js"></script>
     <script type="module" , src="./js/utils.js"></script>
     <script type="module" , src="./js/signUp.js"></script>
     <script type="module" , src="./js/login.js"></script>
+    <script type="module" , src="./js/location.js"></script>
   </body>
 </html>
