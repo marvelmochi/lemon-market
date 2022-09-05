@@ -1,6 +1,7 @@
 import { loginContainer, idInput, pwInput, loginBtn } from "./elements.js";
 import { loadUser } from "./signUp.js";
 import { toggleHidden, LOGINUSER_KEY } from "./utils.js";
+
 function login(event) {
   event.preventDefault();
   let userList = loadUser();

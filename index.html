@@ -50,9 +50,10 @@
       <!-- //로그인 -->
       <!-- 위치 -->
       <div id="location">
-        <div id="town">화곡2동</div>
+        <div id="town"></div>
         <button id="location-btn">🔄</button>
       </div>
+      <div id="map"></div>
       <!-- //위치-->
       <!-- 메인 -->
       <!-- //메인 -->
@@ -63,5 +64,63 @@
     <script type="module" , src="./js/signUp.js"></script>
     <script type="module" , src="./js/login.js"></script>
     <script type="module" , src="./js/location.js"></script>
+    <script id="script"></script>
+    <!--<script>
+      const APP_KEY = config.KAKAO_API_KEY;
+      const API_SRC = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${APP_KEY}`;
+      console.log(API_SRC);
+      document.getElementById("script").src = API_SRC;
+    </script>-->
+
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec5f9dfa66a3a6eb6a6850d5f29e1b6d&libraries=services"
+    ></script>
+    <script>
+      const town = document.getElementById("town");
+      let mapContainer = document.getElementById("map"),
+        mapOption = {
+          center: new kakao.maps.LatLng(33.450701, 126.570667),
+          level: 5,
+        };
+
+      const map = new kakao.maps.Map(mapContainer, mapOption);
+      const geocoder = new kakao.maps.services.Geocoder();
+      searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+
+      function searchAddrFromCoords(coords, callback) {
+        geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);
+      }
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          let lat = position.coords.latitude,
+            lon = position.coords.longitude;
+
+          const locPosition = new kakao.maps.LatLng(lat, lon);
+
+          displayMarker(locPosition);
+        });
+      } else {
+      }
+      function displayMarker(locPosition) {
+        const marker = new kakao.maps.Marker({
+          map: map,
+          position: locPosition,
+        });
+
+        map.setCenter(locPosition);
+      }
+      function displayCenterInfo(result, status) {
+        if (status === kakao.maps.services.Status.OK) {
+          for (let i = 0; i < result.length; i++) {
+            if (result[i].region_type === "H") {
+              town.innerHTML = result[i].address_name;
+              break;
+            }
+          }
+        }
+      }
+    </script>
   </body>
 </html>
