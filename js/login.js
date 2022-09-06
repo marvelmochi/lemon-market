@@ -1,4 +1,10 @@
-import { loginContainer, idInput, pwInput, loginBtn } from "./elements.js";
+import {
+  loginContainer,
+  idInput,
+  pwInput,
+  loginBtn,
+  mainContainer,
+} from "./elements.js";
 import { loadUser } from "./signUp.js";
 import { toggleHidden, LOGINUSER_KEY } from "./utils.js";
 
@@ -17,6 +23,7 @@ function login(event) {
       //로그인 완료
       alert(`${idInput.value}님 환영합니다!`);
       toggleHidden(loginContainer);
+      toggleHidden(mainContainer);
       updateLoginUser(loginUser);
     } else {
       //로그인 불가

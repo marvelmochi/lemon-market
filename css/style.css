@@ -26,16 +26,22 @@
   --font-large: 24px;
   --font-medium: 18px;
   --font-small: 14px;
+  --font-smaller: 12px;
 
   /* radius */
   --button-radius: 0.3em;
   --input-radius: 0.1em;
+  --box-radius: 0.3em;
 
   /* shadow */
   --shadow-color: #e6dc73;
   --text-shadow: 1px 1px 4px #d7ce65;
   --button-shadow: 1px 1px 5px #d6d08b;
   --box-shadow: 1px 1px 6px var(--shadow-color);
+  --content-shadow: 0px 0px 2px #b7b7b78e;
+
+  /* border */
+  --box-border: 1px solid #929292;
 }
 
 body {
@@ -145,7 +151,7 @@ body {
 #location #town {
   margin-right: 10px;
 }
-#location #location-btn {
+#location .imoticon-btn {
   background-color: var(--colourless);
   border: 0;
   font-size: var(--font-medium);
@@ -153,6 +159,83 @@ body {
 #map {
   margin: 0 auto;
   width: 300px;
-  height: 200px;
+  height: 150px;
   border-radius: var(--button-radius);
+}
+
+/* 게시판 */
+#product-board {
+  width: 310px;
+  height: 480px;
+  margin: 20px auto;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 게시물 */
+.product-container {
+  background-color: var(--main-bg-color);
+  font-family: var(--text-font);
+  margin-left: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  width: 280px;
+  height: 200px;
+  box-shadow: var(--content-shadow);
+  border-radius: var(--box-radius);
+  position: relative;
+}
+
+.product-img {
+  width: inherit;
+  height: 170px;
+  background-color: #929292;
+  text-align: center;
+  background: url(../img/cup.jpg) no-repeat;
+  background-size: 280px 170px;
+}
+.product-location {
+  position: absolute;
+  width: inherit;
+  height: 20px;
+  top: 150px;
+  font-size: var(--font-smaller);
+  text-align: center;
+  position: absolute;
+  color: var(--colourless);
+  background-color: #93939369;
+  color: var(--title-text-color);
+}
+.product-location:hover {
+  background-color: var(--colourless);
+  color: var(--colourless);
+}
+
+.product-title {
+  height: 20px;
+  font-size: var(--font-smaller);
+  padding: 6px 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* scrollBar */
+/* 커스텀 스크롤 바*/
+.scrollBar {
+  overflow-y: auto;
+}
+.scrollBar::-webkit-scrollbar {
+  width: 10px; /* 스크롤바의 너비 */
+}
+.scrollBar::-webkit-scrollbar-thumb {
+  height: 10%; /* 스크롤바의 길이 */
+  background: var(--button-color); /* 스크롤바의 색상 */
+  border-radius: 10px;
+}
+
+.scrollBar::-webkit-scrollbar-track {
+  background-color: var(--colourless); /*스크롤바 뒷 배경 색상*/
 }

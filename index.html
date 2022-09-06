@@ -53,88 +53,59 @@
         <!-- 위치 -->
         <div id="location">
           <div id="town"></div>
-          <button id="location-btn">🔄</button>
+          <button id="location-btn" class="imoticon-btn">🔄</button>
+          <button id="map-hiding-btn" class="imoticon-btn">🔼</button>
         </div>
         <div id="map"></div>
         <!-- //위치-->
+        <!-- 게시판 -->
+
+        <div id="product-board" class="scrollBar">
+          <a href="#">
+            <div class="product-container">
+              <div class="product-img"></div>
+              <div class="product-location">서울특별시 강서구 화곡3동</div>
+              <div class="product-title">컵 팝니다</div>
+            </div>
+          </a>
+          <a href="#">
+            <div class="product-container">
+              <div class="product-img"></div>
+              <div class="product-location">서울특별시 강서구 화곡3동</div>
+              <div class="product-title">컵 팝니다</div>
+            </div>
+          </a>
+          <a href="#">
+            <div class="product-container">
+              <div class="product-img"></div>
+              <div class="product-location">서울특별시 강서구 화곡3동</div>
+              <div class="product-title">컵 팝니다</div>
+            </div>
+          </a>
+          <a href="#">
+            <div class="product-container">
+              <div class="product-img"></div>
+              <div class="product-location">서울특별시 강서구 화곡3동</div>
+              <div class="product-title">컵 팝니다</div>
+            </div>
+          </a>
+        </div>
+        <!-- //게시판 -->
       </div>
       <!-- //메인 -->
     </div>
+
     <script type="text/javascript" , src="./js/apiKey.js"></script>
     <script type="module" , src="./js/elements.js"></script>
     <script type="module" , src="./js/utils.js"></script>
     <script type="module" , src="./js/signUp.js"></script>
     <script type="module" , src="./js/login.js"></script>
-    <script type="module" , src="./js/location.js"></script>
-    <script id="script"></script>
-    <!--<script>
-      const APP_KEY = config.KAKAO_API_KEY;
-      const API_SRC = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${APP_KEY}`;
-      console.log(API_SRC);
-      document.getElementById("script").src = API_SRC;
-    </script>-->
-
     <script
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec5f9dfa66a3a6eb6a6850d5f29e1b6d&libraries=services"
     ></script>
-    <script>
-      const town = document.getElementById("town");
-      const mapContainer = document.getElementById("map");
-      const locationBtn = document.getElementById("location-btn");
-      paintUserLocationOnMap();
-      function paintUserLocationOnMap() {
-        // geolocation을 사용할 수 있으면
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function (position) {
-            const lat = position.coords.latitude;
-            const lon = position.coords.longitude;
-            //console.log(lat, lon);
-
-            const mapOption = {
-              center: new kakao.maps.LatLng(lat, lon),
-              level: 4,
-            };
-
-            const map = new kakao.maps.Map(mapContainer, mapOption);
-
-            // 마커 표시를 위한 위치 변수
-            let userPosition = new kakao.maps.LatLng(lat, lon);
-            displayMarker(map, userPosition);
-            // 유저 위치로 주소를 검색해서 상단에 표시
-            searchAddrFromCoords(userPosition, displayInfo);
-          });
-        } else {
-          alert("죄송합니다. geolocation을 사용할 수 없습니다.");
-        }
-      }
-
-      function displayMarker(map, userPosition) {
-        const marker = new kakao.maps.Marker({
-          map: map,
-          position: userPosition,
-        });
-      }
-
-      function searchAddrFromCoords(coords, callback) {
-        // 주소 -> 좌표 변환 객체
-        const geocoder = new kakao.maps.services.Geocoder();
-        // 좌표로 행정동 주소 정보를 요청
-        geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);
-      }
-
-      function displayInfo(result, status) {
-        if (status === kakao.maps.services.Status.OK) {
-          for (let i = 0; i < result.length; i++) {
-            if (result[i].region_type === "H") {
-              town.innerHTML = result[i].address_name;
-              break;
-            }
-          }
-        }
-      }
-
-      locationBtn.addEventListener("click", paintUserLocationOnMap);
-    </script>
+    <script type="module" , src="./js/location.js"></script>
+    <script type="module" , src="./js/product.js"></script>
+    <script id="script"></script>
   </body>
 </html>
