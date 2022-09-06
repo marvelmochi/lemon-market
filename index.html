@@ -48,14 +48,16 @@
         </form>
       </div>
       <!-- //로그인 -->
-      <!-- 위치 -->
-      <div id="location">
-        <div id="town"></div>
-        <button id="location-btn">🔄</button>
-      </div>
-      <div id="map"></div>
-      <!-- //위치-->
       <!-- 메인 -->
+      <div id="main">
+        <!-- 위치 -->
+        <div id="location">
+          <div id="town"></div>
+          <button id="location-btn">🔄</button>
+        </div>
+        <div id="map"></div>
+        <!-- //위치-->
+      </div>
       <!-- //메인 -->
     </div>
     <script type="text/javascript" , src="./js/apiKey.js"></script>
@@ -78,40 +80,50 @@
     ></script>
     <script>
       const town = document.getElementById("town");
-      let mapContainer = document.getElementById("map"),
-        mapOption = {
-          center: new kakao.maps.LatLng(33.450701, 126.570667),
-          level: 5,
-        };
+      const mapContainer = document.getElementById("map");
+      const locationBtn = document.getElementById("location-btn");
+      paintUserLocationOnMap();
+      function paintUserLocationOnMap() {
+        // geolocation을 사용할 수 있으면
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function (position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            //console.log(lat, lon);
 
-      const map = new kakao.maps.Map(mapContainer, mapOption);
-      const geocoder = new kakao.maps.services.Geocoder();
-      searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+            const mapOption = {
+              center: new kakao.maps.LatLng(lat, lon),
+              level: 4,
+            };
+
+            const map = new kakao.maps.Map(mapContainer, mapOption);
+
+            // 마커 표시를 위한 위치 변수
+            let userPosition = new kakao.maps.LatLng(lat, lon);
+            displayMarker(map, userPosition);
+            // 유저 위치로 주소를 검색해서 상단에 표시
+            searchAddrFromCoords(userPosition, displayInfo);
+          });
+        } else {
+          alert("죄송합니다. geolocation을 사용할 수 없습니다.");
+        }
+      }
+
+      function displayMarker(map, userPosition) {
+        const marker = new kakao.maps.Marker({
+          map: map,
+          position: userPosition,
+        });
+      }
 
       function searchAddrFromCoords(coords, callback) {
+        // 주소 -> 좌표 변환 객체
+        const geocoder = new kakao.maps.services.Geocoder();
+        // 좌표로 행정동 주소 정보를 요청
         geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);
       }
 
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-          let lat = position.coords.latitude,
-            lon = position.coords.longitude;
-
-          const locPosition = new kakao.maps.LatLng(lat, lon);
-
-          displayMarker(locPosition);
-        });
-      } else {
-      }
-      function displayMarker(locPosition) {
-        const marker = new kakao.maps.Marker({
-          map: map,
-          position: locPosition,
-        });
-
-        map.setCenter(locPosition);
-      }
-      function displayCenterInfo(result, status) {
+      function displayInfo(result, status) {
         if (status === kakao.maps.services.Status.OK) {
           for (let i = 0; i < result.length; i++) {
             if (result[i].region_type === "H") {
@@ -121,6 +133,8 @@
           }
         }
       }
+
+      locationBtn.addEventListener("click", paintUserLocationOnMap);
     </script>
   </body>
 </html>
