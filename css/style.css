@@ -17,6 +17,7 @@
   /* size */
   --mobile-width: 360px;
   --mobile-height: 800px;
+  --header-height: 50px;
 
   /* font */
   --title-font: "Anton";
@@ -55,12 +56,14 @@ body {
   background-color: var(--main-color);
   border: black;
   margin: 0 auto;
+
+  position: relative;
 }
 
 /* 헤더 */
 #header {
   width: var(--mobile-width);
-  height: 50px;
+  height: var(--header-height);
   background-color: var(--header-color);
   color: var(--title-text-color);
   display: flex;
@@ -69,7 +72,8 @@ body {
   justify-content: space-between;
   box-shadow: 0px 4px 4px -4px var(--shadow-color);
 }
-#title {
+.title {
+  color: var(--main-color);
   font-size: var(--font-large);
   text-shadow: var(--text-shadow);
   font-family: var(--title-font);
@@ -78,13 +82,50 @@ body {
   margin-left: 20px;
   text-shadow: var(--text-shadow);
 }
-#menu-button {
+.menu-btn {
   color: var(--title-text-color);
+  margin-left: 10px;
   margin-right: 20px;
   font-size: 20px;
   border: 0;
   background-color: var(--colourless);
   text-shadow: var(--text-shadow);
+}
+/* 메뉴 */
+#menu {
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  background-color: var(--header-color);
+  box-shadow: 0px 0px 2px var(--shadow-color);
+  width: 200px;
+  height: inherit;
+}
+#menu-header {
+  display: flex;
+  height: var(--header-height);
+}
+#menu-header .title {
+  margin-left: 24px;
+  line-height: 50px;
+}
+
+#menu-box-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+}
+.menu-box {
+  margin: 10px auto;
+  font-family: var(--kor-font);
+  color: var(--main-color);
+  font-weight: 700;
+  width: 200px;
+  text-align: center;
+  text-shadow: var(--text-shadow);
+}
+.menu-box:hover {
+  color: var(--button-color);
 }
 
 /* 로그인 */
@@ -155,8 +196,11 @@ body {
   background-color: var(--colourless);
   border: 0;
   font-size: var(--font-medium);
+  margin-right: 5px;
 }
+
 #map {
+  z-index: 0;
   margin: 0 auto;
   width: 300px;
   height: 150px;
@@ -164,10 +208,19 @@ body {
 }
 
 /* 게시판 */
+#board-title {
+  margin: 0 auto;
+  background-color: var(--header-color);
+  height: 20px;
+  text-align: center;
+  margin-top: 10px;
+  font-family: var(--kor-font);
+  font-size: var(--font-small);
+}
 #product-board {
   width: 310px;
   height: 480px;
-  margin: 20px auto;
+  margin: 10px auto;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
@@ -238,4 +291,21 @@ body {
 
 .scrollBar::-webkit-scrollbar-track {
   background-color: var(--colourless); /*스크롤바 뒷 배경 색상*/
+}
+
+/* 판매 글 작성 팝업 */
+#posting-wrap {
+  position: absolute;
+  z-index: 2;
+  width: var(--mobile-width);
+  height: var(--mobile-height);
+  background-color: var(--main-color);
+}
+#posting-header {
+  height: var(--header-height);
+  background-color: var(--header-color);
+}
+#posting-title {
+}
+#posting-close-btn {
 }

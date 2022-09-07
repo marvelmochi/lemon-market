@@ -62,11 +62,11 @@ function displayInfo(result, status) {
 
 function clickHiding() {
   map.classList.toggle("hidden");
-  if (mapHidingBtn.innerText === "🔼") {
-    mapHidingBtn.innerText = "🔽";
+  if (mapHidingBtn.innerText === "▲") {
+    mapHidingBtn.innerText = "▼";
     productBoard.style.height = "630px";
   } else {
-    mapHidingBtn.innerText = "🔼";
+    mapHidingBtn.innerText = "▲";
     productBoard.style.height = "480px";
   }
 }

@@ -7,7 +7,7 @@
     <title>Lemon Market</title>
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/reset.css" />
-
+    <link rel="stylesheet" href="./css/style-posting.css" />
     <!-- 웹 폰트 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,14 +15,36 @@
       href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe&family=Anton&family=Noto+Sans+KR:wght@500&family=Roboto:wght@500&display=swap"
       rel="stylesheet"
     />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   </head>
   <body>
     <div id="wrap">
+      <!-- 메뉴 -->
+      <div id="menu">
+        <div id="menu-header">
+          <button id="menu-close-button" class="menu-btn">☰</button>
+          <div class="title">MENU</div>
+        </div>
+        <div id="menu-box-container">
+          <a href="#"> <div class="menu-box">회원정보</div></a>
+          <a href="#"><div id="menu-posting" class="menu-box">판매하기</div></a>
+        </div>
+      </div>
+      <!-- //메뉴-->
+      <!--판매글 작성 팝업-->
+      <div id="posting-wrap">
+        <div id="posting-header">
+          <div id="posting-title"></div>
+        </div>
+      </div>
+      <!-- //판매글 작성 팝업-->
       <!-- 헤더 -->
       <div id="header">
         <div id="logo">🍋</div>
-        <div id="title">LEMON MARKET</div>
-        <button id="menu-button">☰</button>
+        <div class="title">LEMON MARKET</div>
+        <button id="menu-button" class="menu-btn">☰</button>
       </div>
       <!-- //헤더 -->
       <!-- 로그인 -->
@@ -48,18 +70,19 @@
         </form>
       </div>
       <!-- //로그인 -->
+
       <!-- 메인 -->
       <div id="main">
         <!-- 위치 -->
         <div id="location">
           <div id="town"></div>
-          <button id="location-btn" class="imoticon-btn">🔄</button>
-          <button id="map-hiding-btn" class="imoticon-btn">🔼</button>
+          <button id="location-btn" class="imoticon-btn">🌐</button>
+          <button id="map-hiding-btn" class="imoticon-btn">▲</button>
         </div>
         <div id="map"></div>
         <!-- //위치-->
         <!-- 게시판 -->
-
+        <div id="board-title">지금 거래 중인 상품</div>
         <div id="product-board" class="scrollBar">
           <a href="#">
             <div class="product-container">
@@ -95,7 +118,6 @@
       <!-- //메인 -->
     </div>
 
-    <script type="text/javascript" , src="./js/apiKey.js"></script>
     <script type="module" , src="./js/elements.js"></script>
     <script type="module" , src="./js/utils.js"></script>
     <script type="module" , src="./js/signUp.js"></script>
@@ -106,6 +128,6 @@
     ></script>
     <script type="module" , src="./js/location.js"></script>
     <script type="module" , src="./js/product.js"></script>
-    <script id="script"></script>
+    <script type="module" , src="./js/menu.js"></script>
   </body>
 </html>
